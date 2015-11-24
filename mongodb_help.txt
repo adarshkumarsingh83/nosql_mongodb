@@ -1,0 +1,48 @@
+#start mongo shell
+c:/Adarsh_k>mongo
+
+#clearing screen in windows mongo shell
+>cls
+
+#display all the dbs in the mongodb
+>show dbs
+
+#swtiching the db
+>use <dbname>
+
+#display all the collection 
+>show collections
+
+#switched to db admin
+>use admin
+
+#add a user "admin" to the admin database. 
+>db.addUser("admin","pwd")
+
+#displaying all the method related to db
+>db.help()
+
+#displaying all the method realted to collection
+>db.<collection>.help()	
+
+#selecting all the data from the document
+>db.<collection>.find().pretty();
+
+#selecting only mathcing data from the document
+>db.<collection>.find({'key':'value'}).pretty();
+
+#type of collection 
+1.assocative array {'key2':'value1','key2':'value2'}
+2.list ['val1','val2','val3']
+
+#inserting the data into mongo db collection
+>db.<collection>.insert({'key2':'value1','key2':'value2'});
+
+#same document can hold any sturcture
+>db.<collection>.insert({'key2':'value1','key2':'value2','key3':'value3'});
+
+#same document can hold associative and list object together 
+>db.<collection>.insert({'key2':'value1','key2':'value2','key3':'value3','key4':['val1','val2','val3']});
+
+
+
