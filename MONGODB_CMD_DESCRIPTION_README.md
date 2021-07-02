@@ -1,6 +1,7 @@
------------------------------------------------------------------------------------------------------------------
-Collection
------------------------------------------------------------------------------------------------------------------
+----
+# Collection
+---
+```
 Name									Description
 db.collection.aggregate()				Provides access to the aggregation framework pipeline
 db.collection.count()	  				Wraps count to return a count of the number of 
@@ -53,9 +54,12 @@ db.collection.totalIndexSize()			Reports the total size used by the indexes on
 										collStats output.
 db.collection.update()					Modifies a document in a collection.
 db.collection.validate()				Performs diagnostic operations on a collection.
+```
+
 -----------------------------------------------------------------------------------------------------------------
-Cursor
+# Cursor
 -----------------------------------------------------------------------------------------------------------------
+```
 Name									Description
 cursor.addOption()						Adds special wire protocol flags that modify the 
 										behavior of the query.’
@@ -95,9 +99,13 @@ cursor.sort()							Returns results ordered according
 										to a sort specification.
 cursor.toArray()						Returns an array that contains all 
 										documents returned by the cursor.
+
+```										
+
 -----------------------------------------------------------------------------------------------------------------
-Database
+# Database
 -----------------------------------------------------------------------------------------------------------------
+```
 Name									Description
 db.addUser()							Adds a user to a database, and allows administrators
 										to configure the user’s privileges.
@@ -173,9 +181,13 @@ db.shutdownServer()						Shuts down the current mongod or mongos
 db.stats()								Returns a document that reports on the 
 										state of the current database.
 db.version()							Returns the version of the mongod instance.
+
+```
+
 -----------------------------------------------------------------------------------------------------------------
-Replication
+# Replication
 -----------------------------------------------------------------------------------------------------------------
+```
 Name									Description
 rs.add()								Adds a member to a replica set.
 rs.addArb()								Adds an arbiter to a replica set.
@@ -198,10 +210,12 @@ rs.syncFrom()							Sets the member that this replica set member
 										will sync from, overriding the default 
 										sync target selection logic.
 										
-										
+```
+
 -----------------------------------------------------------------------------------------------------------------
-Sharding
+# Sharding
 -----------------------------------------------------------------------------------------------------------------
+```
 Name									Description
 sh._adminCommand						Runs a database command against the admin database,
 										like db.runCommand(), but can confirm that 
@@ -253,10 +267,12 @@ sh.waitForDLock()						Internal. Waits for a specified distributed
 sh.waitForPingChange()					Internal. Waits for a change in ping state from one
 										of the mongos in the sharded cluster.
 										
-										
+```
+
 -----------------------------------------------------------------------------------------------------------------
-Connection
+# Connection
 -----------------------------------------------------------------------------------------------------------------
+```
 Name									Description
 Mongo.getDB()							Returns a database object.
 Mongo.getReadPrefMode()					Returns the current read preference mode 
@@ -271,10 +287,12 @@ Mongo()									Creates a new connection object.
 connect()								Connects to a MongoDB instance and to 
 										a specified database on that instance.
 										
-										
+```
+
 -----------------------------------------------------------------------------------------------------------------
-Subprocess
+# Subprocess
 -----------------------------------------------------------------------------------------------------------------
+```
 Name									Description
 clearRawMongoProgramOutput()			For internal use.
 rawMongoProgramOutput()					For internal use.
@@ -288,10 +306,12 @@ stopMongod()							For internal use.
 waitMongoProgramOnPort()				For internal use.
 waitProgram()							For internal use.
 
+```
 
 -----------------------------------------------------------------------------------------------------------------
-Native
+# Native
 -----------------------------------------------------------------------------------------------------------------
+```
 Name									Description
 cat()									Returns the contents of the specified file.
 cd()									Changes the current working directory to 
@@ -316,4 +336,4 @@ quit()									Exits the current shell session.
 _rand()									Returns a random number between 0 and 1.
 removeFile()							Removes the specified file from the local file system.
 _srand()								For internal use.
------------------------------------------------------------------------------------------------------------------
+```
