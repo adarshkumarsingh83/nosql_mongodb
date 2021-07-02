@@ -78,8 +78,10 @@ db.<collection>.find( { $and : [ {'_id': { $gt:valueMin } },{ '_id':{ $lt:valueM
 ### $nor operator
 ```
 >db.<collection>.find( { $nor : [ {'_id': { $gt : 10 } } , { '_id' : { $lt : 20 } } ] } )
+```
 
 ---
+
 ## Nested collection search
 ```
 >db.mydb.insert( {'_id':'200','key':'value200','subdoc':{'k1':'sk1','k2':'sk2'} } )
