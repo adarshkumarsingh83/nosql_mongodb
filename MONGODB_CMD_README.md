@@ -1,100 +1,158 @@
-#starting mongo server 
-c:/adarsh_k>mongod.exe --config D:\MONGO_DATABASE\mongodb\mongo.config
+### starting mongo server 
+```
+* c:/adarsh_k>mongod.exe --config D:\MONGO_DATABASE\mongodb\mongo.config
+```
 
-#start mongo shell
-c:/>Adarsh_k>mongo
+### start mongo shell
+```
+* c:/>Adarsh_k>mongo
+```
 
-#clearing screen in windows mongo shell
+### clearing screen in windows mongo shell
+```
 >cls
+```
 
-#checking the version of mongoserver
+### checking the version of mongoserver
+```
 >db.version() 
+```
 
-#display all the dbs in the mongodb server
+### display all the dbs in the mongodb server
+```
 >show dbs
+```
 
-#swtiching to particular db
+### swtiching to particular db
+```
 >use <dbname>
+```
 
-#display all the collection 
+### display all the collection 
+```
 >show collections
+```
 
-#switched to db admin
+### switched to db admin
+```
 >use admin
+```
 
-#add a user "admin" to the admin database. 
+### add a user "admin" to the admin database. 
+```
 >db.addUser("admin","pwd")
+```
 
-#removing a user form database
+### removing a user form database
+```
 >db.removeUser("admin")
+```
 
-#displaying all the method related to db
+### displaying all the method related to db
+```
 >db.help()
+```
 
-#displaying all the method realted to collection
+### displaying all the method realted to collection
+```
 >db.<collection>.help()	
+```
 
-#displaying all the method realted help 
+### displaying all the method realted help 
+```
 >db.<collection>.<methodName>().help()
+```
 
-#selecting all the data from the document
+### selecting all the data from the document
+```
 >db.<collection>.find().pretty();
+```
 
-#selecting only mathcing data from the document
+### selecting only mathcing data from the document
+```
 >db.<collection>.find({'key':'value'}).pretty();
 >db.<collection>.find({'_id':'1'}).pretty();
+```
 
-#type of collection 
+### type of collection 
+```
 1.assocative array {'key2':'value1','key2':'value2'}
 2.list ['val1','val2','val3']
-
-#inseting all types
-#integer value
+```
+# inseting all types
+### integer value
+```
 db.<collection>.insert( {x : 3});
-#float value
+```
+### float value
+```
 db.<collection>.insert( {x : 2.9} );
-#date value
+```
+### date value
+```
 db.<collection>.insert( {x : new Date()} );
-#boolean value
+```
+### boolean value
+```
 db.<collection>.insert( {x : true } );
-#max key range
+```
+### max key range
+```
 db.<collection>.insert( {x : MaxKey } )
-#min key range
+```
+### min key range
+```
 db.<collection>.insert( {x : MinKey } )
+```
 
-#inserting the data into mongo db collection
+### inserting the data into mongo db collection
+```
 >db.<collection>.insert({'key1':'value1','key2':'value2'});
 >db.<collection>.insert({'_id':'1','key1':'value1','key2':'value2'});
+```
 
-#same document can hold any sturcture
+### same document can hold any sturcture
+```
 >db.<collection>.insert({'key2':'value1','key2':'value2','key3':'value3'});
 >db.<collection>.insert({'_id':'1','key2':'value1','key2':'value2','key3':'value3'});
+```
 
-#same document can hold associative and list object together 
+### same document can hold associative and list object together 
+```
 >db.<collection>.insert({'key2':'value1','key2':'value2','key3':'value3','key4':['val1','val2','val3']});
 >db.<collection>.insert({'_id':'1','key2':'value1','key2':'value2','key3':'value3','key4':['val1','val2','val3']});
+```
 
-#inserting data of associative array with help of varable 
+### inserting data of associative array with help of varable 
+```
 >i={'key1':'value1','key2':'value2'}
 >db.<collection>.insert(i);
 >i={'_id':'1','key1':'value1','key2':'value2'}
 >db.<collection>.insert(i);
+```
 
-#inserting data of nesting collection with help of varable 
+### inserting data of nesting collection with help of varable 
+```
 >j={'key2':'value1','key2':'value2','key3':'value3','key4':['val1','val2','val3']}
 >db.<collection>.insert(j);
 >j={'_id':'1','key2':'value1','key2':'value2','key3':'value3','key4':['val1','val2','val3']}
 >db.<collection>.insert(j);
+```
 
-#inseting data useing loop
+### inseting data useing loop
+```
 >for (var i = 1; i <= 25; i++) db.<collection>.insert( { x : i } )
 >for (var i = 1; i <= 25; i++) db.<collection>.insert( { _id : i , 'key' : 'value'+i } )
+```
 
-#selecting data in variable and displaing using while loop
+### selecting data in variable and displaing using while loop
+```
 >var data = db.<collection>.find()
 >while ( data.hasNext() ) printjson( data.next() ) 
+```
 
-#selecting data in variable and displaing using foreach loop
+### selecting data in variable and displaing using foreach loop
+```
 >var data = db.<collection>.find()
 >data.forEach( function(myDoc) { 
 		print( "id: " + myDoc._id ); 
@@ -104,13 +162,19 @@ db.<collection>.insert( {x : MinKey } )
        printjson( myDoc); 
 	} 
  );
-#selecting data in variable and displaing using for loop
+```
+
+### selecting data in variable and displaing using for loop
+```
 >var data = db.<collection>.find();
 >for(i=0;i<data.count();i++){
   printjson(data[i]);
 }
------------------------------------------------------------------                                   
-#inserting the data with the help of function
+```
+
+
+### inserting the data with the help of function
+```
 >function insertData(dbName, colName, num) {
 	var col = db.getSiblingDB(dbName).getCollection(colName);
 		for (i = 0; i < num; i++) {
@@ -118,17 +182,32 @@ db.<collection>.insert( {x : MinKey } )
 		}
 	print(col.count());
 }
-#calling the funtion for inserttion
+```
+
+### calling the funtion for inserttion
+```
 >insertData("test", "testData", 400)
------------------------------------------------------------------
-#inserting the data with the help of function by passing json
+```
+
+---
+
+
+### inserting the data with the help of function by passing json
+```
 >function insertJsonData(databaseName,colletionName,json){
   var collectionObject = db.getSiblingDB(databaseName).getCollection(colletionName);
   collectionObject.insert(json);
 }
+```
+### call the function 
+```
 >insertJsonData("mydb","mydb",{'_id':1000,'key':'value1000'});
------------------------------------------------------------------
-#selection of the documents using function with for loop
+````
+
+---
+
+### selection of the documents using function with for loop
+```
 >function displayDataForLoop(databaseName, collectionName){  
   var collectionObject = db.getSiblingDB(databaseName).getCollection(collectionName);
   var myCursor=collectionObject.find();
@@ -136,10 +215,17 @@ db.<collection>.insert( {x : MinKey } )
 		printjson(myCursor[i]);
 	}
 }
-#calling the fucntion for selection
+```
+
+### calling the fucntion for selection
+```
 >displayDataForLoop("mydb","mydb");
------------------------------------------------------------------
-#selection of the documents using function with while loop
+```
+
+---
+
+### selection of the documents using function with while loop
+```
 >function displayDataWhileLoop(databaseName, collectionName){  
   var collectionObject = db.getSiblingDB(databaseName).getCollection(collectionName);
   var myCursor=collectionObject.find();
@@ -147,10 +233,16 @@ db.<collection>.insert( {x : MinKey } )
 	printjson(myCursor.next());
   }
 }
-#calling the fucntion for selection
+```
+### calling the fucntion for selection
+```
 >displayData("mydb","mydb");
------------------------------------------------------------------
-#selection of the documents using function with forEach loop
+```
+
+---
+
+### selection of the documents using function with forEach loop
+```
 >function displayDataForEachLoop(databaseName, collectionName){  
   var collectionObject = db.getSiblingDB(databaseName).getCollection(collectionName);
   var myCursor=collectionObject.find();  
@@ -159,188 +251,236 @@ db.<collection>.insert( {x : MinKey } )
 	} 
  );
 }
-#calling the fucntion for selection
+```
+### calling the fucntion for selection
+```
 >displayDataForEachLoop("mydb","mydb");
------------------------------------------------------------------
-#explaing the colleciton
->db.<collection>.find().hint().explain()
+```
 
-#dropping database
+---
+
+### explaing the colleciton
+```
+>db.<collection>.find().hint().explain()
+```
+
+### dropping database
+```
 >show dbs
 >use <db>
 >db.dropDatabase()
+```
 
-#deleting all the document from the collection
+### deleting all the document from the collection
+```
 >db.<collection>.remove()
+```
 
-#deleting only particular document in the colleciton
+### deleting only particular document in the colleciton
+```
 >db.<collection>.remove({'_id':idvalue})
+```
 
-#updateing all the document for the collections
+### updateing all the document for the collections
+```
 >db.<collection>.update()
+```
 
-#updating particular document in the collections
+### updating particular document in the collections
+```
 >db.<collection>.update({_id:idvalue},{$set:{'key':'value'}})
+```
 
-#updaing particular doucment and removing a field 
+### updaing particular doucment and removing a field 
+```
 >db.<collection>.update({_id:idvalue},{$unset:{'akey':'akeyvalue'}})
+```
 
-#updating an array
+### updating an array
+```
 >db.<collection>.insert({'_id':'value','key':'value','akey':['value1','value2']})
 >db.<collection>.update({'key':'value'},{'key':'value','akey':['val1','val2','val3']})
 >db.<collection>.update({'_id':'value','key':'value'},{'key':'value','akey':['value1','value2','value3']},{ upsert: true })
+```
 
-#save ObjectId required only id with 24 digit
+### save ObjectId required only id with 24 digit
+```
 >db.<collection>.save('_id':ObjectId("507c4e138fada716c89d0014"),'key','value','akey':['v1','v2'])
 >db.<collection>.find({'key':'value'})
+```
 
-#inserting date
+### inserting date
+```
 > db.<collection>.insert({'_id':'value','key':'value','date':new Date('13/09/1983')})
 > db.<collection>.find({'dob':new Date('13/09/1983')})
 { "_id" : "11", "key" : "value11", "dob" : ISODate("0NaN-NaN-NaNTNaN:NaN:NaNZ") }
-==================================
-#bulk inserttion
+```
+
+---
+
+### bulk inserttion
+```
 > db.<collection>.insert( [ {'_id':'value1','key':'value1'},{'_id':'value2','key':'value2'},{'_id':'value3','key':'value3'} ] )
 >db.<collection>.find( { $and : [ {'_id' : { $gt : 'minValue1' } }, { '_id' : { $lt : 'maxValue2' } } ] } )
-*****************************
-#renaming the column name
-***************************** 
->db.<collection>.update( { '_id':'value'} , { $rename: { 'old_col_name1' : 'old_col_value' , 'new_col_name1' : 'new_col_value1' } } )
-==================================
-#$exists operator
--------------
->db.<collection>.find( { $nor: [ {'key' : { $exists : 'value1' } } ]  } ) 
-==================================
-#$regex operator
--------------
->db.<collection>.find( )
-==================================
-#$where operator
--------------
->db.<collection>.find( { $where: { 'this._id == 10'} } )
-==================================
-#$match operator
--------------
->db.<collection>.aggregate( { $match : { '_id' : 1 } } );
-==================================
-#$group operator
-----------------
->db.<collection>.aggregate( { $match : { _id : { $gt :10 , $lte :100 } } } , { $group: { _id: null, count: { $sum: 1 } } } );
+```
 
-==================================
----------------------------------------------------------------------------------------------------------------------------------------------
-********************************************************************************************************************************************
-################################################logical operator operator example###############################################
-********************************************************************************************************************************************
----------------------------------------------------------------------------------------------------------------------------------------------
-#$or operator
----------------------------------
+
+### renaming the column name
+```
+>db.<collection>.update( { '_id':'value'} , { $rename: { 'old_col_name1' : 'old_col_value' , 'new_col_name1' : 'new_col_value1' } } )
+```
+
+### $exists operator
+```
+>db.<collection>.find( { $nor: [ {'key' : { $exists : 'value1' } } ]  } ) 
+```
+
+### $regex operator
+```
+>db.<collection>.find( )
+```
+
+### $where operator
+```
+>db.<collection>.find( { $where: { 'this._id == 10'} } )
+```
+### $match operator
+```
+>db.<collection>.aggregate( { $match : { '_id' : 1 } } );
+```
+### $group operator
+```
+>db.<collection>.aggregate( { $match : { _id : { $gt :10 , $lte :100 } } } , { $group: { _id: null, count: { $sum: 1 } } } );
+```
+
+----
+##   logical operator operator example
+---
+
+### $or operator
+```
 >db.<collection>.find( { '_id' : { $gt : value} , $or: [ { 'key' : 'value' } ] } )
-==================================
-#$and operator
----------------------------------
+```
+
+### $and operator
+```
 >db.<collection>.find( { $and : [ {'_id' : 'value'} , { 'key' : 'value'} ] } )
 db.<collection>.find( { $and : [ {'_id': { $gt:valueMin } },{ '_id':{ $lt:valueMax } } ] } )
-==================================
-#$not operator
----------------------------------
+```
+
+### $not operator
+```
 >db.<collection>.find( { '_id':{ $not : { $gt : maxlimit }} } )
 >db.<collection>.find( { '_id':{ $not : { $in: [1,2,3,4,5,6,7] }} } )
-==================================
-#$nor operator
----------------------------------
+```
+### $nor operator
+```
 >db.<collection>.find( { $nor : [ {'_id': { $gt : 10 } } , { '_id' : { $lt : 20 } } ] } )
-==================================
----------------------------------------------------------------------------------------------------------------------------------------------
-********************************************************************************************************************************************
-###############################################Comparison Query Operators###############################################
-********************************************************************************************************************************************
----------------------------------------------------------------------------------------------------------------------------------------------
-#equal 
----------------------------------
+```
+
+---
+## Comparison Query Operators
+---
+
+### equal 
+```
 >db.<collection>.find( { '_id' : 'value'  } )
-=================================
-#$ne operator
----------------------------------
+```
+### $ne operator
+```
 >db.<collection>.find( { '_id' : { $ne : value } } )
-==================================
-#$gt operator
----------------------------------
+```
+### $gt operator
+```
 >db.<collection>.find( { '_id' : { $gt : 0 } } )
-==================================
-#$lt operator
----------------------------------
+```
+### $lt operator
+```
 >db.<collection>.find( { '_id' : { $lt : value } } )
-==================================
-#$gte operator
----------------------------------
+```
+### $gte operator
+```
 >db.<collection>.find( { '_id': { $gte: 90 } } )
-==================================
-#lte operator
----------------------------------
+```
+### lte operator
+```
 >db.<collection>.find( { '_id' : { $lte: 20 } } )
-==================================
-#$in operator
----------------------------------
+```
+### $in operator
+```
 >db.<collection>.find( { '_id' : { $in : [ 1 , 2 , 3 ] } } )
 >db.<collection>.find( { 'key' : { $in : [ 'val1' , 'val2' , 'val3' ] } } )
-#$nin operator
----------------------------------
+```
+
+### $nin operator
+```
 >db.<collection>.find( { '_id' : { $nin: [ 1, 2, 3 ] } } )
-==================================
-#$all operator
----------------------------------
+```
+### $all operator
+```
 >db.<collection>.find( { 'key' : { $all: [ 1,2,3,4,5] } } ) 
-==================================
-==================================
-#Database Commands
-----------------------------------
-#count
-----------------------------------
+```
+
+## Database Commands
+### count
+```-
 > db.runCommand( { count : '<collectionName>'} )
 { "n" : 15, "ok" : 1 }
 > db.runCommand( { count : 'mydb' ,query : { '_id': {$gt : '100' } } , skip : 1 } )
 { "n" : 4, "ok" : 1 }
 > db.runCommand( { count : 'mydb' ,query : { '_id': {$gt : '100' } } ,limit : 2 , skip : 1 } )
 { "n" : 2, "ok" : 1 }
+```
 
-#Element
-----------------------------------
-#$exists 
+## Element
+### $exists 
+```
 >db.<collection>.find( { 'key': { $exists: 'value'} } )
 ->display only those doc where key is one columns 
+```
 
-#$mod
+### $mod
+```
 > db.mydb.find( { _id: { $mod: [ 2, 0 ] } } )
 ->display only those doc where id is even
+```
 
-#$type
+### $type
+```
 db.inventory.find( { 'key': { $type : typeValue } } )
 typeValue:=> [ Double 1, String	2, Object 3, Array 4, Binary data 5, Undefined (deprecated)	6, Object id 7
 ,Boolean 8, Date 9, Null 10, Regular Expression	11, JavaScript 13, Symbol 14, JavaScript (with scope) 15 
  ,32-bit integer	16, Timestamp 17, 64-bit integer 18, Min key 255, Max key 127]
- 
-#Javascript
--------------------------------------
-#$where
+```
+### Javascript
+```----
+### $where
 > db.mydb.insert( { '_id':'300','key':'value300','subdoc':['val1','val2','val3']} )
 > db.mydb.find( { $where : "Array.isArray(this.subdoc)"} )
 { "_id" : "300", "key" : "value300", "subdoc" : [  "val1",  "val2",  "val3" ] }
+```
 
-#$regex
+### $regex
+```
 > db.mydb.find( { 'key':{ $regex : /^value.*$/ } } )
+```
 
-#$elemMatch
+### $elemMatch
+```
 >db.mydb.insert({'_id':500,'mydata':{'key','val1','key1':'val2'} } )
 > db.mydb.find( { 'mydata':{ $elemMatch:{ 'key':'val1'} } } )
+```
 
-#$size
+### $size
+```
 > db.mydb.find( { 'mydata': { $size: 2 } } );
----------------------------------------------------------------------------------------------------------------------------------------------
-********************************************************************************************************************************************
-################################################creating user###############################################
-********************************************************************************************************************************************
----------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+---
+# creating user
+---
+
+```
 > use testtdb
 switched to db testtdb
 > db.createUser( { user:'adarsh' , pwd:'radha' , roles:['readWrite','dbAdmin'] } )
@@ -353,29 +493,47 @@ switched to db testtdb
         ],
         "_id" : ObjectId("52007c6103450349b6db8f8c")
 }
-#finding user
+```
+
+
+
+### finding user
+```
 > db.system.users.find()
 { "_id" : ObjectId("52007d3103450349b6db8f8d"), "user" : "adarsh", "pwd" : "34ab4ce912add4b5eaabb6d7f7f62815", "roles" : [  "readWrite",  "dbAdmin" ] }
-#removing user
+```
+
+### removing user
+```
 > db.removeUser('adarsh')
-#chaning pwd
+```
+
+### chaning pwd
+```
 >db = db.getSiblingDB('<dbname>')
 >db.changeUserPassword('<userName>', "SOhSS3TbYhxusooLiW8ypJPxmt1oOfL")
----------------------------------------------------------------------------------------------------------------------------------------------
-Export from mongodb
----------------------
+```
+
+---
+
+## Export from mongodb
+```
 >mongoexport --collection <collection_name> --out <file_name>.json
 >mongoexport --db <db_name> --collection <collection_name> --query '{"field": 1}'
 >mongoexport --db <db_name> --collection <collection_name> --dbpath <path of the mongo db []>
 >mongoexport --host <hostname> --port <portno> --username <username> --password <password> --collection <collection_name> --file <file_name>.json
+````
 
-Import from mongodb
----------------------
+## Import from mongodb
+```
 >mongoimport --collection collection --file collection.json
 >mongoimport --db <db_name> --collection <collection_name> --stopOnError --dbpath <mongodb path>
 >mongoimport --db <db_name> --collection <collection_name> --type <json|csv|tsv> --file <filepath/filename>.csv
 >mongoimport --host <hostname> --port <portno> --username <username> --password <password> --collection <collection_name> --db <dbname> --file <filepath/filename>.json
----------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+### help
+```
 > db.help()
 DB methods:
         db.addUser(userDocument)
@@ -386,7 +544,7 @@ DB methods:
         db.copyDatabase(fromdb, todb, fromhost)
         db.createCollection(name, { size : ..., capped : ..., max : ... } )
         db.currentOp() displays currently executing operations in the db
-        db.dropDatabase() #dorpping database
+        db.dropDatabase() ### dorpping database
         db.eval(func, args) run code server-side
         db.fsyncLock() flush data to disk and lock server for backups
         db.fsyncUnlock() unlocks server following a db.fsyncLock()
@@ -396,7 +554,7 @@ DB methods:
         db.getLastErrorObj() - return full status object
         db.getMongo() get the server connection object
         db.getMongo().setSlaveOk() allow queries on a replication slave server
-        db.getName() # display the name of the database
+        db.getName() ###  display the name of the database
         db.getPrevError()
         db.getProfilingLevel() - deprecated
         db.getProfilingStatus() - returns if profiling is on and slow threshold
@@ -422,7 +580,9 @@ DB methods:
         db.shutdownServer()
         db.stats()
         db.version() current version of the server
----------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+```
 > db.<collection>.help()
 DBCollection help
         db.<collection>.find().help() - show DBCursor help
@@ -462,9 +622,11 @@ DBCollection help
         db.<collection>.getShardVersion() - only for use with sharding
         db.<collection>.getShardDistribution() - prints statistics about data distribution in the cluster
         db.<collection>.getSplitKeysForChunks( <maxChunkSize> ) - calculates split points over all chunks and returns splitter function
----------------------------------------------------------------------------------------------------------------------------------------------
-var cursor=db.<collection>.find()
+````
 
+
+## var cursor=db.<collection>.find()
+```
 cursor.addOption()			Adds special wire protocol flags that modify the behavior of the query.’
 cursor.batchSize()			Controls the number of documents MongoDB will return to the client in a single network message.
 cursor.count()				Returns a count of the documents in a cursor.
@@ -485,9 +647,11 @@ cursor.skip()				Returns a cursor that begins returning results only after passi
 cursor.snapshot()			Forces the cursor to use the index on the _id field. Ensures that the cursor returns each document, with regards to the value of the _id field, only once.
 cursor.sort()				Returns results ordered according to a sort specification.
 cursor.toArray()			Returns an array that contains all documents returned by the cursor.
----------------------------------------------------------------------------------------------------------------------------------------------
-Connection Methods
+```
 
+
+## Connection Methods
+```
 Name								Description
 Mongo.getDB()						Returns a database object.
 Mongo.getReadPrefMode()				Returns the current read preference mode for the MongoDB connection.
@@ -496,150 +660,4 @@ Mongo.setReadPref()					Sets the read preference for the MongoDB connection.
 Mongo.setSlaveOk()					Allows operations on the current connection to read from secondary members.
 Mongo()								Creates a new connection object.
 connect()							Connects to a MongoDB instance and to a specified database on that instance.
----------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
