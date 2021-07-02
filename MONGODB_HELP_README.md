@@ -81,3 +81,70 @@ user
 { "_id" : ObjectId("513af934c115e7a6b4bcceba"), "user" : "testdb", "readOnly" : false, "pwd" : "b9ff75cbf18bd98d8554efec12c72090" }
 >
 ```
+
+# 11.clearing screen in windows mongo shell
+```
+>cls
+```
+
+# 12.display all the dbs in the mongodb
+```
+>show dbs
+```
+
+# 13.swtiching the db
+```
+>use <dbname>
+```
+
+# 14.display all the collection 
+```
+>show collections
+```
+
+# 15.switched to db admin
+```
+>use admin
+```
+
+# 16.add a user "admin" to the admin database. 
+```
+>db.addUser("admin","pwd")
+```
+
+# 17.displaying all the method related to db
+```
+>db.help()
+```
+
+# 18.displaying all the method realted to collection
+```
+>db.<collection>.help()	
+```
+
+# 19.selecting all the data from the document
+```
+>db.<collection>.find().pretty();
+```
+# 19.selecting only mathcing data from the document
+```
+>db.<collection>.find({'key':'value'}).pretty();
+```
+# 20.type of collection 
+```
+1.assocative array {'key2':'value1','key2':'value2'}
+2.list ['val1','val2','val3']
+```
+# 21.inserting the data into mongo db collection
+```
+>db.<collection>.insert({'key2':'value1','key2':'value2'});
+```
+
+# 22.same document can hold any sturcture
+```
+>db.<collection>.insert({'key2':'value1','key2':'value2','key3':'value3'});
+```
+# 23.same document can hold associative and list object together 
+```
+>db.<collection>.insert({'key2':'value1','key2':'value2','key3':'value3','key4':['val1','val2','val3']});
+```
