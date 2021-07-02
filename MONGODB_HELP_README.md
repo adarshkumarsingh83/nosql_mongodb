@@ -1,11 +1,16 @@
-$ mongo
+# $ mongo
+```
 MongoDB shell version: 2.2.3
 connecting to: test
-#1.connect to the "admin" database.
+```
+# 1.connect to the "admin" database.
+```
 > use admin             		
-
 switched to db admin			
-#2. add a user "admin" to the admin database. 
+```
+
+# 2. add a user "admin" to the admin database. 
+```
 > db.addUser("admin","password")	
 {
 	"user" : "admin",
@@ -14,36 +19,49 @@ switched to db admin
 	"_id" : ObjectId("513af8cac115e7a6b4bcceb9")
 }
 addUser succeeded, but cannot wait for replication since we no longer have auth
- 
-#3. connect to the "testdb" database. 
+```
+
+# 3. connect to the "testdb" database. 
+```
 > use testdb				
 switched to db testdb
+```
 
-#4. now, read and write need authentication
+# 4. now, read and write need authentication
+```
 > show collections			
 Sat Mar  9 16:54:57 uncaught exception: error: {
 	"$err" : "unauthorized db:testdb ns:testdb.system.namespaces lock type:0 client:127.0.0.1",
 	"code" : 10057
 }
-
-#5. connect back to the "admin" database.
+```
+# 5. connect back to the "admin" database.
+```
 > use admin				
+```
 
-#6. performs authentication, 1 means succeed, 0 means failed
+# 6. performs authentication, 1 means succeed, 0 means failed
+```
 switched to db admin
 > db.auth("admin","password")		
 1
+```
 
-#7. connect to the "testdb" database.
+# 7. connect to the "testdb" database.
+```
 > use testdb				
 switched to db testdb
+```
 
-#8. no problem, it shows all collections
+# 8. no problem, it shows all collections
+```
 > show collections			
 system.indexes
 user
+```
 
-#9. add another user "testdb" to the "testdb" database.
+# 9. add another user "testdb" to the "testdb" database.
+```
 > db.addUser("testdb","password")       
 {
 	"user" : "testdb",
@@ -53,10 +71,13 @@ user
 }
 > show collections
 system.indexes
+```
 
-#10. All users' data are stored in this system.users collection.
+# 10. All users' data are stored in this system.users collection.
+```
 system.users				
 user
 > db.system.users.find()
 { "_id" : ObjectId("513af934c115e7a6b4bcceba"), "user" : "testdb", "readOnly" : false, "pwd" : "b9ff75cbf18bd98d8554efec12c72090" }
 >
+```
